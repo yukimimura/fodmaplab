@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  root to: 'homes#top'
+  get 'foods/index'
+
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
+
+  resources :recipes do
+    resource :favorites, only: [:create, :destroy]
+    collection do
+      get :search
+    end
+  end
+
+  resources :users
+  
 end
