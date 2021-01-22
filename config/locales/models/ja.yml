@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      recipe: レシピ
+      user: ユーザー
+    attributes:
+      recipe:
+        title: 料理名
+        description: コメント
+        people: 人数
+      ingredients:
+        name: 材料
+        amount: 量
+      steps:
+        number: 順番
+        content: 作り方
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン

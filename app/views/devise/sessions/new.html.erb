@@ -1,26 +1,48 @@
-<h2>Log in</h2>
+<h5 class="title mb-5"><strong>ログイン</strong></h5>
+<div class="row">
+  <%# col-smは７６６px以上の時に適用。col-はすべてのサイズに適用される。 %>
+  <div class="col-10 offset-1 col-sm-8 offset-sm-2">
+    <h5><strong>Googleログイン</strong></h5>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="actions mt-5">
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to omniauth_authorize_path(resource_name, provider), class:"google-btn" do %>
+            <i class="fab fa-google"></i> Googleログイン
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="signup-border"></div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <h5><strong>メールアドレスログイン</strong></h5>
+      <div class="field mt-5">
+        <strong><%= f.label :email %></strong>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mt-2" %>
+      </div>
+
+      <div class="field mt-4">
+        <strong><%= f.label :password %></strong>
+        <%= f.password_field :password, autocomplete: "current-password", class:"form-control mt-2" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions mt-5">
+        <%= f.submit "ログイン", class:"signup-btn" %>
+      </div>
+
+      <div class="actions mt-3">
+        <%= link_to "新規登録はこちら", new_user_session_path, style:"text-decoration: underline;" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

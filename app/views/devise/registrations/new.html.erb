@@ -1,29 +1,56 @@
-<h2>Sign up</h2>
+<h5 class="title mb-5"><strong>無料会員登録</strong></h5>
+<div class="row">
+  <%# col-smは７６６px以上の時に適用。col-はすべてのサイズに適用される。 %>
+  <div class="col-10 offset-1 col-sm-8 offset-sm-2">
+    <h5><strong>Googleカンタン登録</strong></h5>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="actions mt-5">
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to omniauth_authorize_path(resource_name, provider), class:"google-btn" do %>
+            <i class="fab fa-google"></i> Googleで作成する
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="signup-border"></div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "layouts/error_messages", model: f.object %>
+
+      <h5><strong>アカウント作成</strong></h5>
+
+      <div class="field mt-5">
+        <strong><%= f.label :name %></strong>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mt-2" %>
+      </div>
+
+      <div class="field mt-4">
+        <strong><%= f.label :email %></strong>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mt-2" %>
+      </div>
+
+      <div class="field mt-4">
+        <strong><%= f.label :password %></strong>
+        <% if @minimum_password_length %>
+        (６文字以上)
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-2" %>
+      </div>
+
+      <div class="field mt-4">
+        <strong><%= f.label :password_confirmation %></strong>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-2" %>
+      </div>
+
+      <div class="actions mt-5">
+        <%= f.submit "アカウントを作成する", class:"signup-btn" %>
+      </div>
+
+      <div class="actions mt-3">
+        <%= link_to "ログインはこちら", new_user_session_path, style:"text-decoration: underline;" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

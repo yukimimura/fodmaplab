@@ -1,0 +1,32 @@
+<div class="search-set mb-5 pb-3">
+  <h5 class="title"><strong>低FODMAPレシピを検索</strong></h5>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="search_con mt-3">
+          <%= form_with url: search_recipes_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keyword, placeholder: "料理名・食材でレシピをさがす", value:@keyword %>
+            <input type="submit" value="&#xf002">
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4 class="mb-5 title"><strong>レシピ一覧</strong></h4>
+<div class="box">
+  <% @recipes.each do |r| %>
+    <%= link_to r do %>
+      <div class="box-content">
+        <%= image_tag r.image.url, class:"recipe-photo" %>
+        <p class="recipe-title"><%= r.title %></p>
+        <div class="ingredient-box">
+          <% r.ingredients.each do |i| %>
+            <span><%= i.name %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="nested-fields">
+  <div class="row mb-3 g-3">
+    <div class="col-sm number">
+      <%= f.number_field :number, class: "form-control", placeholder:"順番" %>
+    </div>
+    <div class="col-sm-7">
+      <%= f.text_area :content, class: "form-control", placeholder:"作り方", rows:"3" %>
+    </div>
+    <div class="col-sm">
+      <%= link_to_remove_association f do %>
+        <i class="fas fa-backspace" style="color: grey;"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

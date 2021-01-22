@@ -1,0 +1,15 @@
+<div class="nested-fields">
+  <div class="row mb-3 g-3">
+    <div class="col-sm-7">
+      <%= f.text_field :name, class: "form-control", placeholder:"材料名" %>
+    </div>
+    <div class="col-sm">
+      <%= f.text_field :amount, class: "form-control", placeholder:"量" %>
+    </div>
+    <div class="col-sm">
+      <%= link_to_remove_association f do %>
+        <i class="fas fa-backspace" style="color: grey;"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

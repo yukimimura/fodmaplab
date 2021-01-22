@@ -1,0 +1,22 @@
+<h3 class="mb-5"><strong>「<%= @keyword %>」の検索結果</strong></h3>
+
+<div class="box">
+  <% @recipes.each do |r| %>
+    <%= link_to r do %>
+      <div class="box-content">
+        <%= image_tag r.image.url, class:"recipe-photo" %>
+        <p class="recipe-title"><%= r.title %></p>
+        <div class="ingredient-box">
+          <% r.ingredients.each do |i| %>
+            <span><%= i.name %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<% unless @recipes.present? %>
+  <h4 class="mt-5 text-center"><strong>該当するレシピはありませんでした</strong></h4>
+  <h5 class="pt-2 text-center">別のキーワードで探してみてください</h5>
+<% end %>
