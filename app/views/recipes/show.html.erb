@@ -39,7 +39,7 @@
     <div class="col-sm">
       <p class="pt-2 pb-1"><%= @recipe.description %></p>
       <p class="pb-3">投稿者：<%= link_to @recipe.user.name, @recipe.user %>さん</p>
-      <span class="h5"><strong>材料</strong></span><span> (<%= @recipe.people %>人分)</span>
+      <span class="h5"><strong>材料</strong></span><span> (<%= @recipe.people %>)</span>
       <table class="table mt-2">
         <tbody>
           <% @recipe.ingredients.each do |i| %>

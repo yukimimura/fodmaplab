@@ -213,8 +213,8 @@ header {
 .number {
   width: 100px;
 }
-.fa-backspace {
-  font-size: 20px;
+.fa-times-circle {
+  font-size: 18px;
 }
 .botton {
   border-color: #ced4d9;
@@ -224,6 +224,27 @@ header {
   cursor: pointer;
   opacity: 0.7;
   transform: scale(1.01, 1.01);
+}
+.btn-container {
+  height: 40px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.new-btn {
+  height: 100%;
+  width: 100%;
+  background-color: #dbb34e;
+  border: none;
+  border-radius: 100px;
+  color: white;
+  font-weight: 600;
+}
+.new-btn:focus {
+  outline: none;
+}
+.new-btn:hover {
+  background-color: #e3c477;
 }
 
 //recipes/index
@@ -352,7 +373,7 @@ header {
 
 //homes/top
 .what-fod {
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   line-height: 2em;
   padding: 5px;
 }

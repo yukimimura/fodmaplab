@@ -1,4 +1,4 @@
-<h4 class="mb-5 title"><strong>Fodmapレシピを編集</strong></h4>
+<h4 class="mb-5 title"><strong>Fodmapレシピを投稿</strong></h4>
 
 <div class="new">
   <%= form_with(model: @recipe, local:true) do |f| %>
@@ -7,6 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm">
+          <strong><%= f.label :image, '写真', class: "form-label sub-title" %></strong>
           <%= f.file_field :image, class: 'img_field', style: 'display:none;' %>
           <% if @recipe.image? %>
             <%= image_tag @recipe.image.url, onClick: "$('.img_field').click()", class: 'img-thumbnail img_prev' %>
@@ -16,11 +17,11 @@
         </div>
         <div class="col-sm">
           <div class="box1">
-            <strong><%= f.label :title, '料理名', class: "form-label" %></strong>
+            <strong><%= f.label :title, '料理名', class: "form-label sub-title" %></strong>
             <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
           </div>
           <div class="box2">
-            <strong><%= f.label :description, 'コメント', class: "form-label" %></strong>
+            <strong><%= f.label :description, 'コメント', class: "form-label sub-title" %></strong>
             <%= f.text_area :description, placeholder: "コメント", class: "form-control text" %>
           </div>
         </div>
@@ -29,13 +30,11 @@
 
     <div class="col-md-10 offset-md-1">
       <div class="container mt-5">
-        <p class="mb-3"><strong>材料</strong></p>
-        <div class="mb-3 row">
-          <div class="col-2">
-            <%= f.number_field :people, class:"form-control people" %>
-          </div>
-          <label for="inputPassword" class="col-10 col-form-label">人分</label>
+        <p class="mb-3 sub-title"><strong>材料</strong></p>
+        <div class="jojo">
+          <%= f.text_field :people, class:"form-control people", placeholder:"何人分" %>
         </div>
+        <span> 例)２人分</span>
         <%= f.fields_for :ingredients do |i| %>
           <%= render "ingredient_fields", f: i %>
         <% end %>
@@ -47,7 +46,7 @@
 
     <div class="col-md-10 offset-md-1 mt-5">
       <div class="container mt-3">
-        <p class="mb-3"><strong>作り方</strong></p>
+        <p class="mb-3 sub-title"><strong>作り方</strong></p>
         <%= f.fields_for :steps do |s| %>
           <%= render "step_fields", f: s %>
         <% end %>
@@ -57,12 +56,14 @@
       </div>
     </div>
 
-    <div class="d-grid gap-2 col-3 mx-auto mt-5 mb-5">
-      <%= f.submit '更新', class:"btn btn-success" %>
+    <div class="container">
+      <div class="row">
+        <div class="btn-container col-sm-5 offset-sm-2">
+          <%= f.submit '更新', class:"new-btn" %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
-
-
 
 <%= javascript_pack_tag 'image_preview' %>
