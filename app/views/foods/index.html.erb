@@ -9,8 +9,9 @@
           <h5><strong>○ 低FODMAP食</strong></h5>
           <ul>
             <% c.foods.where(fod: 1).each do |f| %>
-              <li><%= f.name %></li>
+              <li class="mb-2"><%= f.name %></li>
             <% end %>
+            <p class="mt-2">など...</p>
           </ul>
         </div>
       </div>
@@ -19,8 +20,9 @@
           <h5><strong>× 高FODMAP食</strong></h5>
           <ul>
             <% c.foods.where(fod: 2).each do |f| %>
-              <li><%= f.name %></li>
+              <li class="mb-2"><%= f.name %></li>
             <% end %>
+            <p class="mt-2">など...</p>
           </ul>
         </div>
       </div>
