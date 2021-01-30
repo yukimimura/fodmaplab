@@ -1,0 +1,22 @@
+<div class="search-set mb-5 pb-3">
+  <h5 class="title"><strong>低FODMAPレシピを検索</strong></h5>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="search_con mt-3">
+          <%= form_with url: search_recipes_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keyword, placeholder: "料理名・食材でレシピをさがす", value:@keyword %>
+            <input type="submit" value="&#xf002">
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="title"><strong>Fodmap記事一覧</strong></h3>
+<div class="signup-border"></div>
+<h5 class="text-center">
+  只今準備中です<br>
+  しばらくお待ちください
+</h5>

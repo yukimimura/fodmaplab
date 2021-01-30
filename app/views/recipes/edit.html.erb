@@ -12,7 +12,7 @@
           <% if @recipe.image? %>
             <%= image_tag @recipe.image.url, onClick: "$('.img_field').click()", class: 'img-thumbnail img_prev' %>
           <% else %>
-            <img src="/assets/sample.png" class="img-thumbnail img_prev" onClick="$('.img_field').click()" >
+            <%= image_tag asset_path("sample.png"), class:"img-thumbnail img_prev", onClick:"$('.img_field').click()" %>
           <% end %>
         </div>
         <div class="col-sm">
