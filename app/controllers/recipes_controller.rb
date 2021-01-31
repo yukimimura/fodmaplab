@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :search]
+  before_action :authenticate_user!, except: [:index, :show, :new, :search]
   def index
     @recipes = Recipe.includes(:user).order(id: "DESC")
   end
@@ -12,12 +12,15 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @recipe.steps.build
     @recipe.ingredients.build
+    unless user_signed_in?
+      flash[:notice] = "レシピ投稿にはログインが必要です"
+    end
   end
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
-      flash[:notice] = "レシピを投稿しました。"
+      flash[:notice] = "レシピを投稿しました"
       redirect_to @recipe
     else
       render 'recipes/new'
@@ -31,7 +34,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      flash[:notice] = "レシピを更新しました。"
+      flash[:notice] = "レシピを更新しました"
       redirect_to @recipe
     else
       render 'recipes/edit'

@@ -22,9 +22,43 @@
   FODMAPとは４種類の発酵性の糖質の頭文字をとった呼び方で、これらを含む食品を控える食事療法を「低FODMAP食」といいます。<br>
   このサイトは低FODMAP食のレシピを皆様が投稿とシェアする場として作られています。
 </p>
-<div class="mt-5 mb-2 title">
+
+<h5 class="title mt-5 mb-3"><strong>FODMAP表（一部）</strong></h5>
+<div class="container">
+  <div class="row g-2 mb-3">
+    <div class="col-sm">
+      <div class="low">
+        <h5><strong>○ 低FODMAP食</strong></h5>
+        <ul>
+          <li class="mb-2">米</li>
+          <li class="mb-2">にんじん</li>
+          <li class="mb-2">バナナ</li>
+          <li class="mb-2">バター</li>
+          <li class="mb-2">肉類</li>
+          <p class="mt-2">など...</p>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="high">
+        <h5><strong>× 高FODMAP食</strong></h5>
+        <ul>
+          <li class="mb-2">うどん</li>
+          <li class="mb-2">玉ねぎ</li>
+          <li class="mb-2">りんご</li>
+          <li class="mb-2">牛乳</li>
+          <li class="mb-2">ソーセージ</li>
+          <p class="mt-2">など...</p>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<small><strong><%= link_to "すべて見る＞", foods_index_path, class:"view mr-5 mb-5", style:"color: #DBB34E;" %></strong></small>
+<div class="pb-4"></div>
+
+<div class="mt-5 mb-3 title">
   <span class="h5"><strong><%= link_to "新着のレシピ", recipes_path %></strong></span>
-  <small><strong><%= link_to "すべて見る＞", recipes_path, class:"view", style:"color: #DBB34E;" %></strong></small>
 </div>
 <div class="scr">
   <div class="box-mini">
@@ -43,11 +77,16 @@
     <% end %>
   </div>
 </div>
-<h5 class="mt-5 title"><strong>人気のレシピ</strong></h5>
+<small><strong><%= link_to "すべて見る＞", recipes_path, class:"view mr-5", style:"color: #DBB34E;" %></strong></small>
+
+<h5 class="mt-5 mb-3 title"><strong>人気のレシピ</strong></h5>
 <div class="scr">
   <div class="box-mini">
+    <% n = 1%>
     <% @ranking.each do |r| %>
       <%= link_to r do %>
+      <div class="ranking-<%=n%>"><%=n%>位</div>
+      <% n += 1 %>
         <div class="box-content">
           <%= image_tag r.image.url, class:"recipe-photo" %>
           <p class="recipe-title"><%= r.title %></p>
@@ -61,3 +100,4 @@
     <% end %>
   </div>
 </div>
+<small><strong><%= link_to "すべて見る＞", recipes_path, class:"view mr-5", style:"color: #DBB34E;" %></strong></small>

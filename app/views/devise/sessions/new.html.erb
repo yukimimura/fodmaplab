@@ -2,8 +2,8 @@
 <div class="row">
   <%# col-smは７６６px以上の時に適用。col-はすべてのサイズに適用される。 %>
   <div class="col-10 offset-1 col-sm-8 offset-sm-2">
-    <h5><strong>Googleログイン</strong></h5>
 
+    <h5><strong>Googleログイン</strong></h5>
     <div class="actions mt-5">
       <%- if devise_mapping.omniauthable? %>
         <%- resource_class.omniauth_providers.each do |provider| %>
@@ -13,6 +13,9 @@
         <% end %>
       <% end %>
     </div>
+
+    <h5 class="mt-5"><strong>ゲストログイン</strong></h5>
+    <%= render 'devise/guest_form' %>
 
     <div class="signup-border"></div>
 
